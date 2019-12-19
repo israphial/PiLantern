@@ -26,14 +26,3 @@ def Lantern():
 
 Lantern()
     
-"""    
-try:
-    Lantern()
-except Exception as e:
-    print("fatal error, debug - %s", e)
-finally: #forces gpio slots off
-    blue_led.close()
-    red_led.close()
-    green_led.close()
-    
-"""
