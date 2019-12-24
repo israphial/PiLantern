@@ -1,11 +1,12 @@
 #python3
 
 from threading import Timer
-from gpiozero import PWMLED
+from gpiozero import PWMLED, Button
 
 blue_led = PWMLED(5)
 red_led = PWMLED(6)
 green_led = PWMLED(13)
+button = Button(2)
 
 def blue():
     blue_led.pulse(n=1, fade_in_time=1.5, fade_out_time=1.5)
@@ -24,16 +25,5 @@ def Lantern():
     t2.start()
     t3.start()
 
-Lantern()
-    
-"""    
-try:
-    Lantern()
-except Exception as e:
-    print("fatal error, debug - %s", e)
-finally: #forces gpio slots off
-    blue_led.close()
-    red_led.close()
-    green_led.close()
-    
-"""
+
+button.when_pressed = Lantern()
