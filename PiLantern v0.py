@@ -62,4 +62,28 @@ def single_fast_blink():
     t2.start()
     t3.start()
 
-#button.when_pressed = fast
+class Light:
+    def __init__(self, red_led_pulse_length, red_led_fadein, red_led_fadeout, 
+                green_led_pulse_length, green_led_fadein_, green_led_fadeout,
+                blue_led_pulse_length, blue_led_fadein, blue_led_fadeout,
+                red_start_time, blue_start_time, green_start_time, *args):
+
+    def blink_red():
+    #accept red params to make red blink according to given values
+
+    def blink_blue():
+    #accept blue params to make blue blink according to given values
+
+    def blink_green():
+    #accept green params to make green blink according to given values
+
+    t1 = Timer() #take first start_time and color as second value
+    t2 = Timer() #take second start_time and color as second value
+    t3 = Timer() #take third start_time and color as second value
+    #t1.start()
+    #t2.start()
+    #t3.start()
+    #args received as a tuple, else the tuple is "falsy", so this if will only
+    #activate if args is not falsy, showing me whatever the arg is
+    if args:
+        print("Unexpected args given:", args)
