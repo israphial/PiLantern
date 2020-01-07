@@ -1,5 +1,6 @@
 #python3
 
+from time import sleep
 from threading import Timer
 from gpiozero import PWMLED, Button
 
@@ -27,5 +28,7 @@ def Lantern():
 
 
 
-button.when_pressed = Lantern()
->>>>>>> 9c30771ecb75dd144142bc6718b09d9eb8b90268
+while True:
+    Lantern()
+    sleep(4)
+
