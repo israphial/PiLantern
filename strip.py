@@ -17,6 +17,7 @@ ColorsDict = {
 	'green': (0,128,0),
 	'blue': (0,0,128),
         'yellow': (128, 128, 0),
+        'brick': (255, 16, 0),
         'cyan': (0, 255, 255),
         'white': (255, 255, 255),
         'black': (0, 0, 0),
@@ -41,28 +42,35 @@ def DictValueRetriever(KeyContainer):
     DictKeyValue = ColorsDict.get(KeyContainer)
     pixels.fill(DictKeyValue)
 
+if __name__ == "__main__":
+    while True:
+        try:
+            print("LED strip controller v1")
+            KeyContainer = input("""Color? type 'colors' for a list of available colors, type stay on to close program and keep lights on""").lower()
+            if KeyContainer == "colors":
+                print(ColorsDict.keys())
+                continue
+            if KeyContainer == "stay on":
+                    print("closing program and leaving lights on...")
+                    sleep(2)
+                    quit()
+            if KeyContainer not in ColorsDict:
+                print("""the value you entered does not appear to be in the color list, restarting...""")
+                continue        
 
-while True:
-    try:
-        print("LED strip controller v1")
-        KeyContainer = input("""Color? type 'colors' for a list of available colors""").lower()
-        if KeyContainer == "colors":
-            print(ColorsDict.keys())
-            continue
-        if KeyContainer == "stay on":
-                print("closing program and leaving lights on...")
-                sleep(2)
-                quit()
-        if KeyContainer not in ColorsDict:
-            print("""the value you entered does not appear to be in the color list, restarting...""")
-            continue        
-
-        DictValueRetriever(KeyContainer)
+            DictValueRetriever(KeyContainer)
 
     #exits program and turns light off upon keyboard interrupt, will not
     #break outer scripts
-    except KeyboardInterrupt:
-        print("Exiting program, turning lights off in 2 seconds...")
-        sleep(2)
-        pixels.fill((0, 0, 0))
-        quit()
+        except KeyboardInterrupt:
+            print("Exiting program, turning lights off in 2 seconds...")
+            sleep(2)
+            pixels.fill((0, 0, 0))
+            quit()
+
+#else:
+#script is being ran as a child script - build the program to have 
+#a function that takes in the input from the receiver daemon and 
+#does something with it. see sub_strip for more details
+#merge sub_strip into this program when sub_strip works properly
+   # pass
