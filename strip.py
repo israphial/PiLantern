@@ -45,15 +45,18 @@ def DictValueRetriever(KeyContainer):
 while True:
     try:
         print("LED strip controller v1")
-        KeyContainer = input("""Color? type 'colors' for a list of available
-        colors""").lower()
+        KeyContainer = input("""Color? type 'colors' for a list of available colors""").lower()
         if KeyContainer == "colors":
             print(ColorsDict.keys())
             continue
+        if KeyContainer == "stay on":
+                print("closing program and leaving lights on...")
+                sleep(2)
+                quit()
         if KeyContainer not in ColorsDict:
-            print("""the value you entered does not appear to be in the color
-            list, restarting...""")
+            print("""the value you entered does not appear to be in the color list, restarting...""")
             continue        
+
         DictValueRetriever(KeyContainer)
 
     #exits program and turns light off upon keyboard interrupt, will not
